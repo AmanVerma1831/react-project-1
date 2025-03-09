@@ -1,4 +1,5 @@
 const Header = () => {
+
     return (<>
         <nav className="navbar">
             <div className="nav-container">
@@ -27,28 +28,6 @@ const Header = () => {
             </div>
             <div className="nav-heading">
                 <h1>THE FOOD VILLA</h1>
-            </div>
-            <div className="search-container">
-                <input
-                    type="text"
-                    className="search-input"
-                    placeholder="Search"
-                // value={searchText}
-                // onChange={(e) => {
-                //     setSearchText(e.target.value);
-                // }}
-                />
-                <button
-                    className="search-btn"
-                // onClick={() => {
-                //     //need to filter the data
-                //     const data = filterData(searchText, restaurants);
-                //     // update the state - restaurants
-                //     setRestaurants(data);
-                // }}
-                >
-                    Search
-                </button>
             </div>
         </nav>
     </>)

@@ -11,12 +11,12 @@
 .navbar{
     margin: 0;
     padding: 0;
-    height: 70vh;
+    height: 30vh;
     background-color: #ffad33;
     /* display: flex;
     justify-content: center;
     align-items: center; */
-    margin-bottom: 4rem;
+    /* margin-bottom: 4rem; */
     padding-top: 3rem;
 }
 
@@ -42,6 +42,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #ffad33;
+    padding: 0 0 4rem;
 }
 
 .logo{
@@ -69,12 +71,19 @@
     /* display: flex; */
     /* align-items: center; */
     /* justify-content: space-between; */
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0px auto;
+}
+
+.restaurant-container{
+    display: flex;
+    margin-top: 4rem;
+    /* max-width: 1200px; */
 }
 
 .restaurant-list{
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -85,8 +94,15 @@
     padding: 20px;
     margin: 10px;
     font-size: 14px;
+    width: 250px;
 }
 
-.card > img {
+.card_img_container {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card_img_container > img{
     width: 200px;
 }
