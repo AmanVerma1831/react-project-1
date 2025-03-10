@@ -1,20 +1,18 @@
 
 const RestaurantCard = ({
     name,
-    cuisine,
+    cuisines,
     locality,
-    image
+    cloudinaryImageId
 }) => {
     return (
         <div className="card">
             <div className="card_img_container">
-                <img src={image.url} alt="restaurant-img" />
+                <img src={"https://media-assets.swiggy.com/swiggy/image/upload/" + cloudinaryImageId} alt="restaurant-img" />
             </div>
             <h2>{name}</h2>
-            <h3>{cuisine.map((cuisine) => {
-                return (cuisine.name)
-            }).join(", ")}</h3>
-            <h4>{locality.name}</h4>
+            <h3>{...cuisines.join(", ")}</h3>
+            <h4>{locality}</h4>
         </div>
     );
 }
