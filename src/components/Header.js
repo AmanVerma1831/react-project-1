@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
@@ -8,31 +9,33 @@ const Header = () => {
         <nav className="navbar">
             <div className="nav-container">
                 <div className="logo_img_container">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBfy-1v_MLOMDjTVOEPHJL6S7NTp1Fkz0yIA&s" className="logo" alt="Food Villa Logo" />
+                    <Link to="/" className="" aria-current="page">
+                        <img src="https://bitbucket.org/!api/2.0/repositories/namastedev/namaste-react-live/src/a1e0a48ea31065dc6463974df4b5b5b5a2829c17/src/assets/img/foodvilla.png" className="logo" alt="Food Villa Logo" />
+                    </Link>
                 </div>
                 <div className="nav_list_items_container" id="navbar-default">
                     <ul className="nav_list_items">
                         <li>
-                            <a href="/" className="" aria-current="page">Home</a>
+                            <Link to="/" className="" aria-current="page">Home</Link>
                         </li>
                         <li>
-                            <a href="/" className="">About</a>
+                            <Link to="/about" className="">About</Link>
                         </li>
                         <li>
-                            <a href="/" className="">Services</a>
+                            <Link to="/" className="">Services</Link>
                         </li>
                         <li>
-                            <a href="/" className="">Pricing</a>
+                            <Link to="/" className="">Pricing</Link>
                         </li>
                         <li>
-                            <a href="/" className="">Contact</a>
+                            <Link to="/contact" className="">Contact</Link>
                         </li>
                     </ul>
                 </div>
                 <div className="nav-button">
                     {isLoggedIn ?
-                        (<button class="login-button" role="button" onClick={() => setIsLoggedIn(false)}>Log Out</button>) :
-                        (<button class="login-button" role="button" onClick={() => setIsLoggedIn(true)} >Log In</button>)
+                        (<button className="logout-button" role="button" onClick={() => setIsLoggedIn(false)}>Log Out</button>) :
+                        (<button className="login-button" role="button" onClick={() => setIsLoggedIn(true)} >Log In</button>)
                     }
                 </div>
             </div>

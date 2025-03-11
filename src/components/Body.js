@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
-import { restaurantData } from "./constants";
 import Shimmer from "./Shimmer"
 
 function filterData(searchText, restaurants) {
     const filterData = restaurants.filter((restaurant) =>
-        restaurant?.card?.card?.info?.name?.toLowerCase().includes(searchText.toLowerCase()));
+        restaurant?.name?.toLowerCase()?.includes(searchText.toLowerCase()));
 
     return filterData;
 }
@@ -22,17 +22,16 @@ const Body = () => {
     }, []);
 
     async function getRestaurants() {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.960059122809971&lng=77.57337538383284&collection=83637&tags=layout_CCS_Burger&sortBy=&filters=&type=rcv2&offset=0&page_type=null");
+        const data = await fetch("https://dummyjson.com/recipes");
         const json = await data.json();
-        // console.log(json);
-        setAllRestaurants(json.data?.cards.slice(3));
-        setFilteredRestaurants(json.data?.cards.slice(3));
-        console.log(json.data?.cards.slice(3));
+        // console.log(json?.recipes);
+        setAllRestaurants(json?.recipes);
+        setFilteredRestaurants(json?.recipes);
     }
 
     if (!allrestaurants) return null;
 
-    if (filteredRestaurants?.length === 0) return <h1>No Restaurants Match Your Result</h1>
+    // if (filteredRestaurants?.length === 0) return <h1>No Restaurants Match Your Result</h1>
 
     return allrestaurants?.length === 0 ? (<Shimmer />) : (
         <div className="body-container">
@@ -40,7 +39,7 @@ const Body = () => {
                 <input
                     type="text"
                     className="search-input"
-                    placeholder="Search"
+                    placeholder="Search your favourite restaurant..."
                     value={searchText}
                     onChange={(e) => {
                         setSearchText(e.target.value);
@@ -49,9 +48,7 @@ const Body = () => {
                 <button
                     className="search-btn"
                     onClick={() => {
-                        //need to filter the data
                         const data = filterData(searchText, allrestaurants);
-                        // update the state - restaurants
                         setFilteredRestaurants(data);
 
                     }}
@@ -63,11 +60,9 @@ const Body = () => {
                 <div className="restaurant-list">
                     {filteredRestaurants.map((restaurant) => {
                         return (
-                            <>
-                                <RestaurantCard {...restaurant.card?.card?.info} key={restaurant.length} />
-                                {/* <div>{restaurant.card?.card?.info.id}</div> */}
-                                {/* <div>Aman</div> */}
-                            </>
+                            <Link className="Link" to={"/restaurant/" + restaurant.id} key={restaurant.id} >
+                                <RestaurantCard {...restaurant} />
+                            </Link>
                         )
                     })}
                 </div>
