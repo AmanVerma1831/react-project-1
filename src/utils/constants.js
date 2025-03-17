@@ -3,6 +3,10 @@
 export const IMG_CDN_URL =
     "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
+export const FETCH_RES_URL = "https://dummyjson.com/recipes/";
+
+export const LOGO_IMG = "https://bitbucket.org/!api/2.0/repositories/namastedev/namaste-react-live/src/a1e0a48ea31065dc6463974df4b5b5b5a2829c17/src/assets/img/foodvilla.png";
+
 export const restaurantData = [
     {
         "id": 1,

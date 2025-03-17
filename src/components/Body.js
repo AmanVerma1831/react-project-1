@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
-import Shimmer from "./Shimmer"
-
-function filterData(searchText, restaurants) {
-    const filterData = restaurants.filter((restaurant) =>
-        restaurant?.name?.toLowerCase()?.includes(searchText.toLowerCase()));
-
-    return filterData;
-}
+import { filterData } from "../utils/Helper";
+import Shimmer from "./Shimmer";
+import CTA from "./CTA";
 
 const Body = () => {
 
@@ -17,7 +12,6 @@ const Body = () => {
     const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
-        // API Call
         getRestaurants();
     }, []);
 
@@ -34,40 +28,45 @@ const Body = () => {
     // if (filteredRestaurants?.length === 0) return <h1>No Restaurants Match Your Result</h1>
 
     return allrestaurants?.length === 0 ? (<Shimmer />) : (
-        <div className="body-container">
-            <div className="search-container">
-                <input
-                    type="text"
-                    className="search-input"
-                    placeholder="Search your favourite restaurant..."
-                    value={searchText}
-                    onChange={(e) => {
-                        setSearchText(e.target.value);
-                    }}
-                />
-                <button
-                    className="search-btn"
-                    onClick={() => {
-                        const data = filterData(searchText, allrestaurants);
-                        setFilteredRestaurants(data);
+        <section className="flex justify-center">
+            <div className="max-w-screen-xl">
+                <div className="flex justify-center mt-12">
+                    <input
+                        type="text"
+                        className="border-gray-700 border-1 px-4 py-3 w-1/4"
+                        placeholder="Search your favourite restaurant..."
+                        value={searchText}
+                        onChange={(e) => {
+                            setSearchText(e.target.value);
+                        }}
+                    />
+                    <button
+                        className="bg-gray-700 px-4 py-3 text-white uppercase cursor-pointer border-gray-700 border-1"
+                        onClick={() => {
+                            const data = filterData(searchText, allrestaurants);
+                            setFilteredRestaurants(data);
 
-                    }}
-                >
-                    Search
-                </button>
-            </div>
-            <div className="restaurant-container">
-                <div className="restaurant-list">
-                    {filteredRestaurants.map((restaurant) => {
-                        return (
-                            <Link className="Link" to={"/restaurant/" + restaurant.id} key={restaurant.id} >
-                                <RestaurantCard {...restaurant} />
-                            </Link>
-                        )
-                    })}
+                        }}
+                    >
+                        Search
+                    </button>
+                </div>
+                <div className="flex justify-center mt-10">
+                    <div className="flex flex-wrap">
+                        {filteredRestaurants.map((restaurant) => {
+                            return (
+                                <Link className="md:w-1/4 p-3 mb-12" to={"/restaurant/" + restaurant.id} key={restaurant.id} >
+                                    <RestaurantCard {...restaurant} />
+                                </Link>
+                            )
+                        })}
+                    </div>
+                </div>
+                <div className="my-10 mx-auto">
+                    <CTA />
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

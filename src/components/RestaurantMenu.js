@@ -1,25 +1,16 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Shimmer from './Shimmer';
 import "../assets/restaurantMenu.css"
+import useFetchRestaurantMenu from '../utils/useFetchRestaurantMenu';
 
 function RestaurantMenu() {
 
     const { resId } = useParams();
-    const [restaurantMenu, setRestaurantMenu] = useState({});
 
-    useEffect(() => {
-        getRestaurantMenuInfo();
-    }, [])
+    const restaurantMenu = useFetchRestaurantMenu(resId);
 
-    async function getRestaurantMenuInfo() {
-        const data = await fetch("https://dummyjson.com/recipes/" + resId);
-        const json = await data.json();
-        console.log(json);
-        setRestaurantMenu(json);
-    }
-
-    return (restaurantMenu?.lenght === 0) ? (<Shimmer />) : (
+    return (!restaurantMenu) ? (<Shimmer />) : (
         <div className="menu-card-container">
             <div className="menu-card u-clearfix">
                 <div className="card-body">
