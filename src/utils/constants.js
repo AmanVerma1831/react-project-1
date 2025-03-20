@@ -5,6 +5,8 @@ export const IMG_CDN_URL =
 
 export const FETCH_RES_URL = "https://dummyjson.com/recipes/";
 
+export const FETCH_RES_URL2 = "https://api.sampleapis.com/recipes/recipes";
+
 export const LOGO_IMG = "https://bitbucket.org/!api/2.0/repositories/namastedev/namaste-react-live/src/a1e0a48ea31065dc6463974df4b5b5b5a2829c17/src/assets/img/foodvilla.png";
 
 export const restaurantData = [
