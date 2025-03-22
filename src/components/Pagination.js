@@ -6,7 +6,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             <button
                 onClick={() => onPageChange(currentPage - 1)}
                 disabled={currentPage === 1}
-                className="flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-black hover:bg-gray-100 hover:text-gray-700"
+                className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-700 border border-black hover:bg-gray-100 hover:text-gray-700"
             >
                 <span className='mr-1 font-bold'>←</span>Previous
             </button>
@@ -16,7 +16,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             <button
                 onClick={() => onPageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className="flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-black hover:bg-gray-100 hover:text-gray-700"
+                className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-700 border border-black hover:bg-gray-100 hover:text-gray-700"
             >
                 Next<span className='ml-1 font-bold'>→</span>
             </button>

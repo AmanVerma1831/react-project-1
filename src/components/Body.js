@@ -40,7 +40,7 @@ const Body = () => {
         <section className="flex justify-center">
             <div className="max-w-screen-xl">
                 <div className="flex mt-12 justify-between">
-                    <div className="w-1/2">
+                    <div className="w-full md:w-1/2 flex justify-center md:justify-start">
                         <input
                             type="text"
                             className="border-gray-700 border-1 px-4 py-3 w-1/2"
@@ -62,7 +62,7 @@ const Body = () => {
                             Search
                         </button>
                     </div>
-                    <div className="align-middle">
+                    <div className="align-middle hidden md:flex">
                         {/* Pagination component */}
                         {totalPages > 0 && (
                             <Pagination
@@ -84,7 +84,17 @@ const Body = () => {
                         })}
                     </div>
                 </div>
-                <div className="my-10 mx-auto">
+                <div className="align-middle mx-auto my-10">
+                    {/* Pagination component */}
+                    {totalPages > 0 && (
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            onPageChange={setCurrentPage}
+                        />
+                    )}
+                </div>
+                <div className="my-10 md:mx-auto mx-4">
                     <CTA />
                 </div>
             </div>
