@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
-import { filterData } from "../utils/Helper";
+import { filterData } from "../utils/helper";
 import Shimmer from "./Shimmer";
 import CTA from "./CTA";
 import Pagination from "./Pagination";
