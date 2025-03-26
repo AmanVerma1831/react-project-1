@@ -5,6 +5,8 @@ import { filterData } from "../utils/helper";
 import Shimmer from "./Shimmer";
 import CTA from "./CTA";
 import Pagination from "./Pagination";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const Body = () => {
 
@@ -13,6 +15,11 @@ const Body = () => {
     const [searchText, setSearchText] = useState("");
     const [currentPage, setCurrentPage] = useState(1); // Add state for current page
     const itemsPerPage = 12; // Items per page
+    const dispatch = useDispatch();
+
+    const addFoodItem = (item) => {
+        dispatch(addItem(item))
+    }
 
     useEffect(() => {
         getRestaurants();
@@ -77,9 +84,18 @@ const Body = () => {
                     <div className="flex flex-wrap">
                         {currentRestaurants.map((restaurant) => {
                             return (
-                                <Link className="md:w-1/4 p-3 mb-12" to={"/restaurant/" + restaurant.id} key={restaurant.id} >
-                                    <RestaurantCard {...restaurant} />
-                                </Link>
+                                <div className="relative md:w-1/4 p-3 mb-12" key={restaurant.id}>
+                                    <Link to={"/restaurant/" + restaurant.id} >
+                                        <RestaurantCard {...restaurant} />
+                                    </Link>
+                                    <button
+                                        className="text-sm absolute bottom-6 right-6 px-4 py-1 bg-pink-500 border-0 
+                                        rounded-sm text-white hover:bg-pink-800 transition duration-500 ease-in-out"
+                                        onClick={() => addFoodItem(restaurant)}
+                                    >
+                                        Add
+                                    </button>
+                                </div>
                             )
                         })}
                     </div>
