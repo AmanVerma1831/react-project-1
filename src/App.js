@@ -13,6 +13,7 @@ import Auth from "./components/Auth";
 import { Provider } from "react-redux";
 import store from "./utils/store";
 import Cart from "./components/Cart";
+import "./index.css"
 
 const Instamart = lazy(() => import("./components/Instamart"));
 const About = lazy(() => import("./components/About"));
